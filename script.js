@@ -1,27 +1,49 @@
-function getComputerChoice() {
-    const choice = ["Rock", "Paper", "Scissors"];
+function getComputerChoice() { // Make the computer choose randomly between rock, paper or scissors 
+    const choice = ["rock", "paper", "scissors"];
     const cpuChoice = Math.floor(Math.random() * 3);
+
     return choice[cpuChoice]
 }
 
 
-function playRound(playerSelection, cpuSelection) {
+function playRound(playerSelection, cpuSelection) { // check who wins between computer or player
 
     if (playerSelection.toLowerCase() == "rock" && cpuSelection.toLowerCase() == "scissors") {
+        console.log("WIN !");
         return "win"
     }
     else if (playerSelection.toLowerCase() == "paper" && cpuSelection.toLowerCase() == "rock") {
+        console.log("WIN !");
         return "win"
     }
     else if (playerSelection.toLowerCase() == "scissors" && cpuSelection.toLowerCase() == "paper") {
+        console.log("WIN !");
         return "win"
     }
     else if (playerSelection.toLowerCase() == cpuSelection.toLowerCase()) {
+        console.log("TIE.");
         return "tie"
     }else {
+        console.log("LOOSE !");
         return "lose"
     }
 }
+
+const btn = document.querySelectorAll('button');
+
+btn.forEach((button) => {
+    button.addEventListener('click', () => {
+        const cpuChoice = getComputerChoice();
+        playRound(button.className, cpuChoice);
+
+        const container = document.querySelector('#result');
+        const content = document.createElement('div');
+
+        content.classList.add('content');
+        content.textContent = `Computer choice: ${getComputerChoice()}`;
+        container.appendChild(content);
+    })
+});
 
 function game() {
     let roundResult = 0;
@@ -52,4 +74,4 @@ function game() {
     }
 }
 
-game();
+// game();
