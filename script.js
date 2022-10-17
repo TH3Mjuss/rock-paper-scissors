@@ -25,13 +25,41 @@ function playRound(playerSelection, cpuSelection) { // check who wins between co
         return "tie"
     }else {
 //        console.log("LOOSE !");
-        return "lose"
+        return "loose"
     }
+}
+
+function gameResult(array) {
+    let win = 0;
+    let loose = 0;
+    let tie = 0;
+    let result;
+
+    for (item in array) {
+        if (array[item] == 'win') {
+            win += 1;
+        } else if (array[item] == 'loose') {
+            loose += 1;
+        } else {
+            tie += 1;
+        }
+    }
+
+    if (win > loose && win > tie) {
+        result = 'win';
+    } else if (loose > win && loose > tie) {
+        result = 'loose';
+    } else {
+        result = 'tie';
+    }
+
+    return result;
 }
 
 const btn = document.querySelectorAll('button');
 let btnPressed;
 let cpu;
+let roundResult = [];
 
 const container = document.querySelector('#result');
 const content = document.createElement('div');
@@ -43,44 +71,18 @@ btn.forEach((button) => {
         cpu = getComputerChoice();
         let round = playRound(btnPressed, cpu);
 
-        console.log("btn pressed: " + btnPressed)
+        roundResult.push(round);
         content.innerText = `User choice: ${btnPressed}
                 Computer choice: ${cpu} 
                 Round: ${round}`;
+        if (roundResult.length == 5) {
+
+            content.innerText += `\n Round results: ${roundResult}`;
+            content.innerText += `\n Match over! It's a: ${gameResult(roundResult).toUpperCase()} !`;
+            roundResult = [];
+        }
     })
 });
 
 content.classList.add('content');
-console.log(`Content: ${content.innerText}`);
 container.appendChild(content);
-
-function game(btnPressed) {
-    let roundResult = 0;
-    const playerSelection = btnPressed;
-    
-    for (let i = 0; i < 5; i++) {
-        let cpu = getComputerChoice(); 
-
-        console.log(`Player Selection: ${playerSelection}`);
-        console.log(`Computer Selection: ${cpu}`);
-
-        if (playRound(playerSelection, cpu) == "win") {
-            roundResult += 1;
-            console.log(`You win! ${playerSelection} beats ${cpu}`);
-        }
-        else if (playRound(playerSelection, cpu) == "lose"){
-            roundResult -= 1;
-            console.log(`You lose! ${cpu} beats ${playerSelection}`);
-        }else {
-            console.log("It's a tie.");
-        } 
-    }
-
-    if (roundResult >= 2) {
-        console.log("You won the match !");
-    }else {
-        console.log("You lost the match.");
-    }
-}
-
-
