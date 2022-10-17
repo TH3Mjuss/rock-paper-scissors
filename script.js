@@ -30,11 +30,12 @@ function playRound(playerSelection, cpuSelection) { // check who wins between co
 }
 
 const btn = document.querySelectorAll('button');
+let btnPressed = '';
 
 btn.forEach((button) => {
     button.addEventListener('click', () => {
-        const cpuChoice = getComputerChoice();
-        playRound(button.className, cpuChoice);
+
+        btnPressed = button.className;
 
         const container = document.querySelector('#result');
         const content = document.createElement('div');
@@ -45,9 +46,9 @@ btn.forEach((button) => {
     })
 });
 
-function game() {
+function game(btnPressed) {
     let roundResult = 0;
-    const playerSelection = prompt();
+    const playerSelection = btnPressed;
     
     for (let i = 0; i < 5; i++) {
         let cpu = getComputerChoice(); 
@@ -74,4 +75,4 @@ function game() {
     }
 }
 
-// game();
+
