@@ -9,27 +9,22 @@ function getComputerChoice() { // Make the computer choose randomly between rock
 function playRound(playerSelection, cpuSelection) { // check who wins between computer or player
 
     if (playerSelection.toLowerCase() == "rock" && cpuSelection.toLowerCase() == "scissors") {
-//        console.log("WIN !");
         return "win"
     }
     else if (playerSelection.toLowerCase() == "paper" && cpuSelection.toLowerCase() == "rock") {
-//        console.log("WIN !");
         return "win"
     }
     else if (playerSelection.toLowerCase() == "scissors" && cpuSelection.toLowerCase() == "paper") {
-//        console.log("WIN !");
         return "win"
     }
     else if (playerSelection.toLowerCase() == cpuSelection.toLowerCase()) {
-//        console.log("TIE.");
         return "tie"
     }else {
-//        console.log("LOOSE !");
         return "loose"
     }
 }
 
-function gameResult(array) {
+function gameResult(array) { // Returns the result of a Bo5 game from single match results in an array
     let win = 0;
     let loose = 0;
     let tie = 0;
@@ -45,9 +40,9 @@ function gameResult(array) {
         }
     }
 
-    if (win > loose && win > tie) {
+    if (win > loose && (win > tie || win == tie)) {
         result = 'win';
-    } else if (loose > win && loose > tie) {
+    } else if (loose > win && (loose > tie || loose == tie)) {
         result = 'loose';
     } else {
         result = 'tie';
