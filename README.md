@@ -1,4 +1,4 @@
-# rock-paper-scissors   
+# rock-paper-scissors
 
-First way of solving the "Rock,paper,scissors" game in the console.
+The "Rock,paper,scissors" game simple UI.
 Exercise from [The Oding Project](https://www.theodinproject.com/)
