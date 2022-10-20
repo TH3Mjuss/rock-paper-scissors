@@ -43,6 +43,12 @@ a {
     flex: 1;
 }
 
+.info {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
 .select {
     margin-bottom: 30px;
 }

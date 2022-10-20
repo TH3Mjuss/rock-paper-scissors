@@ -67,9 +67,10 @@ btn.forEach((button) => {
         let round = playRound(btnPressed, cpu);
 
         roundResult.push(round);
-        content.innerText = `User choice: ${btnPressed}
+        content.innerText = `ROUND : ${roundResult.length}
+                User choice: ${btnPressed}
                 Computer choice: ${cpu} 
-                Round: ${round}`;
+                Result: ${round}`;
         if (roundResult.length == 5) {
 
             content.innerText += `\n Round results: ${roundResult}`;
